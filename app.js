@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var session = require('express-session');
-var MemcachedStore = require('connect-memcached')(session);
+var memjs = require('memjs');
 var csrf = require('csurf');
 var helmet = require('helmet');
 
@@ -45,9 +45,7 @@ var sessionSettings = {
 
 // Session for dev and production env
 if (app.get('env') != 'development') {
-    sessionSettings.store = new MemcachedStore({
-        hosts: [ nconf.get('MEMCACHIER_SERVERS') ]
-    });
+    sessionSettings.store = memjs.Client.create();
     sessionSettings.cookie = { secure: false };
 }
 

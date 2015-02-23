@@ -6,7 +6,8 @@
     "start": "node ./bin/www"
   },
   "engines": {
-    "iojs": "1.1.0"
+    "iojs": "1.1.0",
+    "npm": "2.4.1"
   },
   "dependencies": {
     "body-parser": "~1.10.2",

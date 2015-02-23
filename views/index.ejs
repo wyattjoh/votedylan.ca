@@ -64,20 +64,26 @@
 
       <div id="contact" class="section">
         <div class="content">
-          <h2>Contact</h2>
+          <h2>Contact <span id="form-message" class="message"></span></h2>
 
-          <form method="POST" action="/send">
+          <p>If you want to get closer to the action of the campaign and volunteer, feel free to send me a message and let u know what you would like to get involved with! As well, if you have a burning question you would like to ask or just talk, send me a message through the form below or via Facebook or Twitter.</p>
+
+          <form method="POST" action="/send" id="form">
             <div class="form-group">
               <label for="email">Your Email</label>
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required/>
             </div>
             <div class="form-group">
               <label for="name">Your Name</label>
-              <input type="text" class="form-control" name="name" id="name" placeholder="Your Name">
+              <input type="text" class="form-control" name="name" id="name" placeholder="Your Name" required/>
             </div>
             <div class="form-group">
               <label for="message">Your Message</label>
-              <textarea class="form-control" name="message" rows="3"></textarea>
+              <textarea class="form-control" name="message" rows="3" required></textarea>
+            </div>
+            <div class="form-group clobber">
+              <label for="website">Website</label>
+              <input type="text" class="form-control" name="website" id="website" placeholder="Your Website"/>
             </div>
 
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
@@ -86,5 +92,57 @@
         </div>
       </div>
     </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var form = $("#form");
+        var formMessage = $("#form-message");
+        var formSubmitted = false;
+
+        var pendingAction = function(text) {
+          form.hide();
+
+          formMessage
+            .text(text)
+            .addClass("pending");
+        };
+
+        var changeAction = function(className, text) {
+          formMessage
+            .removeClass("pending")
+            .text(text)
+            .addClass(className);
+        };
+
+        form.submit(function(e) {
+          e.preventDefault();
+
+          if (formSubmitted) {
+            return;
+          }
+
+          formSubmitted = true;
+
+          pendingAction("Sending your message...");
+
+          $.ajax({
+            url: '/send',
+            type: 'post',
+            dataType: 'json',
+            data: form.serialize(),
+            success: function(data) {
+              if (data.status == "sent") {
+                changeAction("success", "Your message was sent!");
+              } else {
+                changeAction("error", "Your message failed to send!");
+              }
+            },
+            error: function() {
+              changeAction("success", "Your message was sent!");
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>

@@ -14,6 +14,27 @@
   animation-delay: @time;
 }
 
+.clobber {
+  display: none;
+}
+
+.message {
+  float: right;
+
+  &.pending {
+    color: yellow;
+  }
+
+  &.error {
+    color: red;
+    text-decoration: underline;
+  }
+
+  &.success {
+    color: @dylan_green;
+  }
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -120,6 +141,10 @@ p {
     margin-bottom: @standard-padding;
     margin-left: @standard-padding;
   }
+}
+
+.btn {
+  color: black;
 }
 
 .platform-point:first-letter {

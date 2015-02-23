@@ -19,10 +19,10 @@ router.post('/', function(req, res, next) {
     "from_email": req.body.email,
     "from_name": req.body.name,
     "to": [{
-            "email": nconf.get("EMAIL_ADDRESS"),
-            "name": "Dylan Hanwell",
-            "type": "to"
-        }],
+      "email": nconf.get("EMAIL_ADDRESS"),
+      "name": "Dylan Hanwell",
+      "type": "to"
+    }],
     "headers": {
         "Reply-To": req.body.email
     },
@@ -30,8 +30,8 @@ router.post('/', function(req, res, next) {
   };
 
   m.messages.send({"message": message}, function(result) {
-    console.log(result);
     res.json({status: "sent"});
+    console.log("Mandrill was sent sucesfully with a status of: " + result[0].status);
   }, function(e) {
     // Mandrill returns the error as an object with name and message keys
     console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);

@@ -127,7 +127,8 @@ p {
 
   p {
     margin-bottom: @standard-padding;
-    line-height: 25px;
+    line-height: 35px;
+    font-size: 20px;
 
     &:last-child {
       margin-bottom: 0;
@@ -137,9 +138,9 @@ p {
 
 #about {
   img {
-    float: right;
-    margin-bottom: @standard-padding;
-    margin-left: @standard-padding;
+    float: left;
+    margin-bottom: @standard-padding / 2;
+    margin-right: @standard-padding;
   }
 }
 
@@ -157,6 +158,6 @@ p {
   padding-left: 3px;
 }
 
-a {
-  color: #00B7FF;
+a, .feature-color {
+  color: @dylan_green;
 }

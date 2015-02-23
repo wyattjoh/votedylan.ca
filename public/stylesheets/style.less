@@ -1,0 +1,127 @@
+// @background: url("../images/gray_sand.png");
+@background: url("../images/binding_dark.png");
+
+@dylan_green: rgb(215, 223, 35);
+@dylan_gray: rgb(77, 79, 78);
+
+@section-padding: 60px;
+@standard-padding: @section-padding/2;
+
+.animation-delay(@time) {
+  -moz-animation-delay: @time;
+  -webkit-animation-delay: @time;
+  -o-animation-delay: @time;
+  animation-delay: @time;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Source Code Pro';
+}
+
+h2 {
+  padding: 0;
+  margin: 0 0 @standard-padding;
+  font-size: 30px;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.hero {
+  display: block;
+  height: 100vh;
+  padding: 0 30px;
+  position: relative;
+  text-align: center;
+  background: @background;
+
+  img {
+    margin-top: 15vh;
+    max-height: 55vh;
+  }
+
+  h1 {
+    color: @dylan_green;
+    font-weight: 300;
+
+
+    .title {
+      text-transform: uppercase;
+      color: white;
+    }
+
+    .animation-delay(1.2s);
+  }
+
+  .nav {
+    .animation-delay(1.5s);
+
+    position: relative;
+
+    .links {
+      position: absolute;
+      display: table-row;
+      right: 0;
+      top: 15px;
+
+      li {
+        display: table-cell;
+        list-style-type: none;
+        padding: 10px 15px;
+
+        a {
+          color: @dylan_green;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
+
+.section {
+  padding: @section-padding;
+
+  &:nth-child(2n + 1) {
+    color: white;
+    background: @background;
+  }
+
+  p {
+    margin-bottom: @standard-padding;
+    line-height: 25px;
+  }
+}
+
+#about {
+  img {
+    float: right;
+    margin-bottom: @standard-padding;
+    margin-left: @standard-padding;
+  }
+}
+
+.platform-point:first-letter {
+  float: left;
+  color: @dylan_green;
+  font-size: 75px;
+  line-height: 60px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 3px;
+}
+
+a {
+  color: #00B7FF;
+}

@@ -65,13 +65,14 @@ p {
   background: @background;
 
   img {
-    margin-top: 23vh;
-    max-height: 55vh;
+    margin-top: 20vh;
+    max-height: 50vh;
   }
 
   h1 {
     color: @dylan_green;
     font-weight: 300;
+
 
     .title {
       font-weight: 400;
@@ -89,7 +90,6 @@ p {
   .nav {
     font-size: 0.7em;
     .animation-delay(1.5s);
-
     position: relative;
 
     .links {
@@ -101,6 +101,11 @@ p {
       li {
         display: table-cell;
         list-style-type: none;
+
+        @media (max-width: 768px) {
+          padding: 10px 10px;
+        }
+
         padding: 10px 15px;
 
         a {

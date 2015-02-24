@@ -39,17 +39,21 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Source Code Pro';
+  font-size: 20px;
 }
 
 h2 {
   padding: 0;
   margin: 0 0 @standard-padding;
-  font-size: 30px;
 }
 
 p {
   margin: 0;
   padding: 0;
+
+  &.center {
+    text-align: center;
+  }
 }
 
 .hero {
@@ -63,13 +67,11 @@ p {
   img {
     margin-top: 23vh;
     max-height: 55vh;
-    max-width: 18vw;
   }
 
   h1 {
     color: @dylan_green;
     font-weight: 300;
-
 
     .title {
       font-weight: 400;
@@ -85,6 +87,7 @@ p {
   }
 
   .nav {
+    font-size: 0.7em;
     .animation-delay(1.5s);
 
     position: relative;
@@ -133,7 +136,6 @@ p {
   p {
     margin-bottom: @standard-padding;
     line-height: 35px;
-    font-size: 20px;
 
     &:last-child {
       margin-bottom: 0;

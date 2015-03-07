@@ -50,6 +50,7 @@ $(document).ready(function() {
   $("#fwd").click(function(e) {
     e.preventDefault();
     $(document.body).html("<iframe id=\"video\" src=\"//www.youtube.com/embed/eh7lp9umG2I?rel=0&autoplay=1&controls=0&showinfo=0\" frameborder=\"0\" allowfullscreen></iframe>")
-    $("#video").css({ width: $(window).width() + 'px', height: $(window).height() + 'px' });;
+    $("#video").css({ width: $(window).width() + 'px', height: $(window).height() + 'px' });
+    ga('send', 'event', 'heman', 'click', 'FWD', 1);
   });
 });

@@ -38,7 +38,7 @@ app.use(helmet.ienoopen());
 app.use(cookieParser(nconf.get('COOKIE_SECRET')));
 
 var sessionSettings = {
-    secret: nconf.get('SESSION_SECRET'),
+    secret: 'secret',
     resave: true,
     saveUninitialized: true,
     proxy: true

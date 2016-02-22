@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
     "from_email": req.body.email,
     "from_name": req.body.name,
     "to": [{
-      "email": nconf.get("EMAIL_ADDRESS"),
+      "email": "dbsigurd@ualberta.ca",
       "name": "Dylan Hanwell",
       "type": "to"
     }],

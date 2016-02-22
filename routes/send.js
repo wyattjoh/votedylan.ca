@@ -11,7 +11,7 @@ router.post('/', function(req, res, next) {
     return;
   }
 
-  var m = new mandrill.Mandrill();
+  var m = new mandrill.Mandrill(process.env.MANDRILL_TOKEN);
 
   var message = {
     "text": req.body.message,

@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 var nconf = require('nconf').argv().env();
 var express = require('express');
 var path = require('path');
@@ -8,7 +10,7 @@ var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 
 var session = require('express-session');
-var memjs = require('memjs');
+var RedisStore = require('connect-redis')(session);
 var csrf = require('csurf');
 var helmet = require('helmet');
 
@@ -41,17 +43,26 @@ var sessionSettings = {
     secret: 'secret',
     resave: true,
     saveUninitialized: true,
-    proxy: true
+    proxy: true,
+    cookie: { secure: false }
 };
 
 // Session for dev and production env
 if (app.get('env') != 'development') {
-    sessionSettings.store = memjs.Client.create();
-    sessionSettings.cookie = { secure: false };
+    sessionSettings.store = new RedisStore({
+      url: process.env.REDIS_URL
+    });
 }
 
 app.use(session(sessionSettings));
 app.use(csrf());
+
+app.use(function (req, res, next) {
+  if (!req.session) {
+    return next(new Error('oh no')); // handle error 
+  }
+  next(); // otherwise continue
+})
 
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "body-parser": "~1.10.2",
+    "connect-redis": "^3.0.2",
     "cookie-parser": "~1.3.3",
     "csurf": "^1.7.0",
     "debug": "~2.1.1",
@@ -20,7 +21,6 @@
     "helmet": "^0.6.1",
     "less-middleware": "1.0.x",
     "mandrill-api": "^1.0.41",
-    "memjs": "^0.8.5",
     "morgan": "~1.5.1",
     "nconf": "^0.7.1",
     "serve-favicon": "^2.2.0"

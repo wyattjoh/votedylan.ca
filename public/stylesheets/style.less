@@ -1,7 +1,7 @@
 // @background: url("../images/gray_sand.png");
 @background: url("../images/dyalnHighRes.jpg") no-repeat fixed center;
 @background-texture: url("../images/binding_dark.png");
-@dylan_green: #FF2D16;
+@dylan_feature_color: rgb(255, 0, 0);
 @dylan_gray: rgb(77, 79, 78);
 
 @section-padding: 60px;
@@ -13,6 +13,16 @@
   -webkit-animation-delay: @time;
   -o-animation-delay: @time;
   animation-delay: @time;
+}
+
+.btn-primary {
+  background: @dylan_feature_color;
+  border-color: darken(@dylan_feature_color, 5%);
+
+  &:hover {
+    background: darken(@dylan_feature_color, 10%);
+    border-color: darken(@dylan_feature_color, 5%);
+  }
 }
 
 .clobber {
@@ -32,7 +42,7 @@
   }
 
   &.success {
-    color: @dylan_green;
+    color: @dylan_feature_color;
   }
 }
 
@@ -56,11 +66,15 @@ p {
     text-align: center;
   }
 }
-.heroTitle{
-    padding-top: 54vh;
-    text-align: right;
-    display: inline-block;
+
+.heroTitle {
+    position: absolute;
+    bottom: 0;
+    background: rgba(255, 0, 0, 0.1);
+    width: 100%;
+    left: 0;
 }
+
 .mainTitle{
     font-family: Bebas;
     font-size: 90pt;
@@ -70,7 +84,7 @@ p {
     font-size: 50pt;
 }
 .navBar{
-    background-color: @dylan_green;
+    background-color: @dylan_feature_color;
     overflow: auto;
     top:0px;
     left:0px;
@@ -94,7 +108,7 @@ p {
   text-align: center;
   background: @background;
   width:100%;
-  background-size: 100% 100vh;
+  background-size: cover;
   img {
     margin-top: 20vh;
     max-height: 50vh;
@@ -202,7 +216,7 @@ p {
 }
 
 a, .feature-color {
-  color: @dylan_green;
+  color: @dylan_feature_color;
 }
 
 #fwd {
